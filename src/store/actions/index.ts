@@ -18,7 +18,6 @@ export const decrement = (): IDECREMENTAction => ({
   type: DECREMENT
 })
 
-
 export interface ICHANGE_TEXTAction {
   type: CHANGE_TEXT_TYPE
   text: string

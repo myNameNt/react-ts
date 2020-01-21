@@ -9,6 +9,7 @@ import Home from './Home'
 import Detail from './DetailPage'
 import UseList from './UseList'
 import Hello from '../components/demo/Hello'
+import StepPage from './StepPage'
 import NotDefine from '../pages/404'
 import './App.css'
 
@@ -44,11 +45,14 @@ class App extends React.PureComponent<AppProps, AppState>{
         <Link to="/hello">go to hello</Link>
         <br/>
         <Link to="/useList">go to useList</Link>
+        <br/>
+        <Link to="/step">go to stepPage</Link>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/useList" component={UseList} />
           <Route path="/detail" component={Detail} />
           <Route path="/hello" component={Hello} />
+          <Route path="/step" component={StepPage} />
           {/* exact 严格匹配 不是一毛一样就不会展示该组件 */}
           <Route path={'/404'} component={NotDefine} />
           <Redirect to={'/404'} />

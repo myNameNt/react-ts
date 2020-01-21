@@ -56,7 +56,7 @@ class Hello extends React.Component<Props, HelloState> {
   getSnapshotBeforeUpdate() {
     return this.myRef.current?.scrollHeight
   }
-  componentDidUpdate(_preProps: any, _preState: any, preScrollHeight: number) {
+  componentDidUpdate(_preProps: Props, _preState: HelloState, preScrollHeight: number) {
     const scrollTop: number = this.myRef.current?.scrollTop || 0
     const scrollHeight: number = this.myRef.current?.scrollHeight || 0
     if (scrollTop < 5) return
@@ -68,7 +68,7 @@ class Hello extends React.Component<Props, HelloState> {
     this.timer = setInterval(() => {
       const nowTime = new Date().getTime()
       const item = { text: nowTime }
-      this.setState((preState: any) => {
+      this.setState((preState: HelloState) => {
         let { listArray } = preState
         listArray.unshift(item)
         return {

@@ -1,0 +1,7 @@
+.step {
+  width: 800px;
+  margin: 100px auto;
+  border: 1px solid aquamarine;
+  min-height: 300px;
+  padding: 30px;
+}

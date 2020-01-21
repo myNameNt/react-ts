@@ -1,39 +1,25 @@
 import React, { Component } from 'react';
 import { List, Icon, Avatar } from 'antd'
-interface Props { }
-
+import {connect} from 'react-redux'
+import {Dispatch} from 'redux'
+import {getUseList} from '../store/actions/useListActions'
+import {StoreState} from '../store/types/index'
+import { UseItem } from '../store/types/const';
+interface Props {
+  list: [UseItem];
+  onGetUseList: ()=> any
+}
 interface State { }
 
-interface IconTextProps {
-  type: string;
-  text: string;
-}
-
-const IconText = ({ type, text }: IconTextProps ) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
-
-export default class UseList extends Component<Props, State> {
+class UseList extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
   }
+  componentDidMount() {
+    this.props.onGetUseList()
+  }
   render() {
-    const listData = [];
-    for (let i = 0; i < 23; i++) {
-      listData.push({
-        href: 'http://ant.design',
-        title: `ant design part ${i}`,
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        description:
-          'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-        content:
-          'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-      });
-    }
-
+    const {list} = this.props
     return (
       <div>
         <List
@@ -45,17 +31,17 @@ export default class UseList extends Component<Props, State> {
             },
             pageSize: 5,
           }}
-          dataSource={listData}
+          dataSource={list}
           footer={
             <div>
               <b>ant design</b> footer part
-      </div>
+            </div>
           }
           renderItem={(item,index) => (
             <List.Item
-              key={item.title}
+              key={index}
             >
-              {item.content}---{index}
+              {item.name}---{index}
             </List.Item>
           )}
         />
@@ -63,3 +49,16 @@ export default class UseList extends Component<Props, State> {
     )
   }
 }
+
+const mapStateToProps = (state: StoreState): {list: [UseItem]} => {
+  return {
+    list: state.useList.list
+  }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    onGetUseList: async ()=> dispatch(await getUseList())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(UseList)
