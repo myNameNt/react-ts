@@ -1,0 +1,9 @@
+.layout {
+  width: 500px;
+  background-color: #fff;
+  display: grid;
+  margin: 50px auto;
+}
+.layout .item{
+  
+}

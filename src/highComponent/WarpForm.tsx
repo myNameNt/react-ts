@@ -6,8 +6,8 @@ interface Props {
 }
 interface State { }
 
-export default function WarpFormFn(FormComponent: React.ComponentType) {
-  return class WarpForm extends Component<Props, State> {
+export default function WarpFormFn<T extends Props>(FormComponent: React.ComponentType<T>, componentName: string = 'default_name') {
+  class WarpForm extends Component<Props, State> {
     constructor(props: Props) {
       super(props)
     }
@@ -22,9 +22,10 @@ export default function WarpFormFn(FormComponent: React.ComponentType) {
     render () {
       return (
         <Form layout="inline" onSubmit={this.handleSubmit}>
-          <FormComponent {...this.props}/>
+          <FormComponent {...this.props as T}/>
         </Form>
       )
     }
   }
+  return Form.create({ name: componentName })(WarpForm);
 }

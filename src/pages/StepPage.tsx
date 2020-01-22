@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Steps, Button } from 'antd'
 const { Step } = Steps
 import './stepPage.css'
+
+import Email from '../components/Email'
+import UseMessage from '../components/UseMessage'
 interface Props {
 
 }
@@ -77,6 +80,17 @@ class StepPage extends Component<Props, State> {
       )
     }
   }
+  onStepInputComponent () {
+    const { current } = this.state
+    switch (current) {
+      case 0:
+        return <Email/>
+      case 1:
+        return <UseMessage/>
+      default:
+        return (<p>暂无</p>)
+    }
+  }
   render() {
     const { steps, current } = this.state
     return (
@@ -90,7 +104,7 @@ class StepPage extends Component<Props, State> {
             })
           }
         </Steps>
-        {}
+        {this.onStepInputComponent()}
         {this.onShowButton()}
       </div>
     )
