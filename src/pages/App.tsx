@@ -11,6 +11,7 @@ import UseList from './UseList'
 import Hello from '../components/demo/Hello'
 import StepPage from './StepPage'
 import LayoutCss from '../pages/LayoutCss'
+import ShowDialog from './ShowDialog'
 import NotDefine from '../pages/404'
 import './App.css'
 
@@ -19,7 +20,7 @@ interface AppProps {
   text: string
   onIncrement: ()=>void
   onDecrement: ()=>void
-  onChangeText: (text: string)=>void
+  onChangeText: (text: string)=> void
 }
 interface AppState {
 
@@ -50,6 +51,8 @@ class App extends React.PureComponent<AppProps, AppState>{
         <Link to="/step">go to stepPage</Link>
         <br/>
         <Link to="/layout">go to layoutCss</Link>
+        <br />
+        <Link to="/showDialog">go to showDialog</Link>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/useList" component={UseList} />
@@ -57,6 +60,7 @@ class App extends React.PureComponent<AppProps, AppState>{
           <Route path="/hello" component={Hello} />
           <Route path="/step" component={StepPage} />
           <Route path="/layout" component={LayoutCss} />
+          <Route path="/showDialog" component={ShowDialog} />
           {/* exact 严格匹配 不是一毛一样就不会展示该组件 */}
           <Route path={'/404'} component={NotDefine} />
           <Redirect to={'/404'} />
@@ -73,7 +77,7 @@ const mapStateToProps = (state: StoreState): {count: number, text: string} => {
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return{
+  return {
     onIncrement: ()=> dispatch(increment()),
     onDecrement: ()=> dispatch(decrement()),
     onChangeText: (text: string)=> dispatch(change_text(text))

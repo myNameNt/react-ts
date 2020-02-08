@@ -1,0 +1,11 @@
+.show_dialog {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+
+.show_dialog_title{
+    width: 100%;
+    text-align: center;
+    color: gold;
+}
