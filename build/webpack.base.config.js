@@ -5,7 +5,7 @@ module.exports = {
     'app': './src/index.tsx'
   },
   output: {
-    path: __dirname + './dist',
+    path: path.join(__dirname, '../dist'),
     filename: '[name].[chunkhash:8].js'
   },
   resolve: {
@@ -31,6 +31,17 @@ module.exports = {
             }
           },
           'css-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
         ]
       }
     ]

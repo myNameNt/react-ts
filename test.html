@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+    <meta name="application-name" content="myApp" >
+    <title>Document</title>
+    <style lang="">
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #eee;
+            box-shadow: 0px 0px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .yellow {
+            background-color: rgb(217, 255, 0);
+            box-shadow: 0px 0px 5px 10px rgba(217, 255, 0,0.5);
+        }
+        .red {
+            background-color: rgb(255, 0, 0);
+            box-shadow: 0px 0px 5px 10px rgba(255, 0, 0, 0.5);
+        }
+        .green {
+            background-color: rgb(0, 255, 55);
+            box-shadow: 0px 0px 5px 10px rgba(0, 255, 55, 0.5);
+        }
+        :root {
+            --test-color: aqua;
+            --test-font-size: 18px;
+        }
+        .test {
+            color: var(--test-color);
+            font-size: var(--test-font-size);
+            background-color: attr(title);
+            width: 1280px;
+            height: 400px;
+            box-sizing: border-box;
+            background-color: red;
+            border: 10px solid black;
+        }
+    </style>
+    <script type="module">
+        // import a from './test.js'
+        // console.log(a)
+         window.onload = function () {
+            class LightBox {
+                constructor(className) {
+                    this.className = className
+                }
+                async initBox() {
+                   
+                    while(true){
+                        await this.setLightColor('yellow', 1000)
+                        await this.setLightColor('red', 2000)
+                        await this.setLightColor('green', 3000)
+                    }
+                }
+                sleep (duration) {
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve()
+                        }, duration);
+                    })
+                }
+                async setLightColor(color, duration) {
+                    const oDiv = document.querySelector(this.className);
+                    oDiv.classList.remove('red', 'green', 'yellow')
+                    oDiv.classList.add(color)
+                     setTimeout(() => {
+                    }, 0);
+                    await this.sleep(duration)
+                }
+            }
+            const odiv = new LightBox('.box')
+            odiv.initBox()
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="test" title="red" ></div>
+</body>
+</html>
