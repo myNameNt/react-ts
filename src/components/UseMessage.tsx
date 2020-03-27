@@ -3,10 +3,16 @@ import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { Form, Input, Icon, Button } from 'antd'
 import WarpForm from '../highComponent/WarpForm'
 
+interface Map<T>{
+  [key:string]: T
+}
+
+let key: Map<number>['xc']
+key = 11
 interface Props {
   form: WrappedFormUtils
 }
-interface State { }
+type State = { }
 function hasErrors(fieldsError: { [x: string]: unknown; }) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
