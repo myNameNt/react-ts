@@ -1,6 +1,28 @@
 @import '~antd/dist/antd.css';
+
 .App {
   width: 100%;
+  min-height: 100vh;
   text-align: center;
   color: seagreen;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.app-nav {
+  padding-top: 30px;
+  width: 300px;
+  overflow: hidden;
+  background-color: bisque;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0px 0px 2px 3px rgb(128, 66, 66);
+}
+
+.app-content{
+  flex: 1;
+}
+.active-class {
+  color: red;
 }

@@ -3,6 +3,8 @@ import { Steps, Button } from 'antd'
 const { Step } = Steps
 import './stepPage.css'
 
+import bg from '../assets/1.jpeg'
+
 import Email from '../components/Email'
 import UseMessage from '../components/UseMessage'
 interface Props {
@@ -94,20 +96,17 @@ class StepPage extends Component<Props, State> {
   render() {
     const { steps, current } = this.state
     return (
-      <div className={'step'}>
-        <Steps current={current}>
-          {
-            steps.map((item) => {
-              return (
-                <Step key={item.id} title={item.title} />
-              )
-            })
-          }
-        </Steps>
-        {this.onStepInputComponent()}
-        {this.onShowButton()}
-      </div>
-    )
+			<div className={"step"}>
+				<Steps current={current}>
+					{steps.map(item => {
+						return <Step key={item.id} title={item.title} />;
+					})}
+				</Steps>
+				<img src={bg}></img>
+				{this.onStepInputComponent()}
+				{this.onShowButton()}
+			</div>
+		);
   }
 }
 
