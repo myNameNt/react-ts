@@ -272,39 +272,80 @@ setInterval(function(){
     <script type="module">
         // import a from './test.js'
         // console.log(a)
-         window.onload = function () {
-            class LightBox {
-                constructor(className) {
-                    this.className = className
-                }
-                async initBox() {
+        //  window.onload = function () {
+        //     class LightBox {
+        //         constructor(className) {
+        //             this.className = className
+        //         }
+        //         async initBox() {
                    
-                    while(true){
-                        await this.setLightColor('yellow', 1000)
-                        await this.setLightColor('red', 2000)
-                        await this.setLightColor('green', 3000)
-                    }
-                }
-                sleep (duration) {
-                    return new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            resolve()
-                        }, duration);
-                    })
-                }
-                async setLightColor(color, duration) {
-                    const oDiv = document.querySelector(this.className);
-                    oDiv.classList.remove('red', 'green', 'yellow')
-                    oDiv.classList.add(color)
-                     setTimeout(() => {
-                    }, 0);
-                    await this.sleep(duration)
-                }
-            }
-            const odiv = new LightBox('.box')
-            odiv.initBox()
-        }
-        
+        //             while(true){
+        //                 await this.setLightColor('yellow', 1000)
+        //                 await this.setLightColor('red', 2000)
+        //                 await this.setLightColor('green', 3000)
+        //             }
+        //         }
+        //         sleep (duration) {
+        //             return new Promise((resolve, reject) => {
+        //                 setTimeout(() => {
+        //                     resolve()
+        //                 }, duration);
+        //             })
+        //         }
+        //         async setLightColor(color, duration) {
+        //             const oDiv = document.querySelector(this.className);
+        //             oDiv.classList.remove('red', 'green', 'yellow')
+        //             oDiv.classList.add(color)
+        //              setTimeout(() => {
+        //             }, 0);
+        //             await this.sleep(duration)
+        //         }
+        //     }
+        //     const odiv = new LightBox('.box')
+        //     odiv.initBox()
+        // }
+        // class MyFun extends Function {
+        //   constructor(){
+        //     super()
+        //     // this.name = name
+        //   }
+        //   showName () {
+        //     console.log(this)
+        //     console.log(this.toString())
+        //   }
+        // }
+        // const fyn = new MyFun('nt')
+        // fyn.showName()
+  async function async1() {
+   console.log('async1 start');
+   await async2();
+   console.log('async1 end');
+ }
+ 
+ async function async2() {
+   console.log('async2 start');
+   return new Promise((resolve, reject) => {
+     resolve();
+     console.log('async2 promise');
+   })
+ }
+ 
+ console.log('script start');
+ setTimeout(function() {
+   console.log('setTimeout');
+ }, 0);  
+ 
+ async1();
+ 
+ new Promise(function(resolve) {
+   console.log('promise1');
+   resolve();
+ }).then(function() {
+   console.log('promise2');
+ }).then(function() {
+   console.log('promise3');
+ });
+ console.log('script end');
     </script>
 </head>
 <body>
