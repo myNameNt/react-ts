@@ -15,7 +15,7 @@ const StepPage = loadable({
 import Home from "./Home";
 import Detail from "./DetailPage";
 import UseList from "./UseList";
-import Hello from "../components/demo/Hello";
+import Hello from "./Hello";
 import DndSample from './DndSample'
 
 import LayoutCss from "../pages/LayoutCss";

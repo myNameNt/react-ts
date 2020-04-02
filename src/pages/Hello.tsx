@@ -1,9 +1,9 @@
 import React from 'react'
-import TableHead from '../TableHead'
-import ChildrenComponent from './ChildrenComponent'
+import TableHead from '../components/TableHead'
+import ChildrenComponent from '../components/demo/ChildrenComponent'
 import { Link, RouteComponentProps, Route } from 'react-router-dom'
 
-import Xi from '../../components/demo/Xi'
+import Xi from '../components/demo/Xi'
 interface HelloProps {
   name: string
 }
