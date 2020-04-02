@@ -49,39 +49,45 @@
     <script type="module">
         // import a from './test.js'
         // console.log(a)
-         window.onload = function () {
-            class LightBox {
-                constructor(className) {
-                    this.className = className
-                }
-                async initBox() {
+        //  window.onload = function () {
+        //     class LightBox {
+        //         constructor(className) {
+        //             this.className = className
+        //         }
+        //         async initBox() {
                    
-                    while(true){
-                        await this.setLightColor('yellow', 1000)
-                        await this.setLightColor('red', 2000)
-                        await this.setLightColor('green', 3000)
-                    }
-                }
-                sleep (duration) {
-                    return new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            resolve()
-                        }, duration);
-                    })
-                }
-                async setLightColor(color, duration) {
-                    const oDiv = document.querySelector(this.className);
-                    oDiv.classList.remove('red', 'green', 'yellow')
-                    oDiv.classList.add(color)
-                     setTimeout(() => {
-                    }, 0);
-                    await this.sleep(duration)
-                }
-            }
-            const odiv = new LightBox('.box')
-            odiv.initBox()
-        }
-        
+        //             while(true){
+        //                 await this.setLightColor('yellow', 1000)
+        //                 await this.setLightColor('red', 2000)
+        //                 await this.setLightColor('green', 3000)
+        //             }
+        //         }
+        //         sleep (duration) {
+        //             return new Promise((resolve, reject) => {
+        //                 setTimeout(() => {
+        //                     resolve()
+        //                 }, duration);
+        //             })
+        //         }
+        //         async setLightColor(color, duration) {
+        //             const oDiv = document.querySelector(this.className);
+        //             oDiv.classList.remove('red', 'green', 'yellow')
+        //             oDiv.classList.add(color)
+        //              setTimeout(() => {
+        //             }, 0);
+        //             await this.sleep(duration)
+        //         }
+        //     }
+        //     const odiv = new LightBox('.box')
+        //     odiv.initBox()
+        // }
+        const p = new Promise((resolve,reject)=>{ 
+            console.log(1); 
+            resolve();
+            console.log(2) 
+        }); 
+        p.then((res)=>{ console.log(3) });
+        console.log(4);
     </script>
 </head>
 <body>
