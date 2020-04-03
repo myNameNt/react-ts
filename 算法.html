@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
-    const example = [1,543,54,34,3456,54,674,765,76,5786,8,678,76867,567,54,32]
+    const example = [1,543,54,34,3456,567,32]
     function sortArr (arr) {
-      for (let i = 0; i < arr.length - 1; i++) {
-        for(let j = 0; j< arr.length - 1 -i; j++){
-          if (arr[j] > arr[j+1]) {
-            const temp = arr[j]
-            arr[j] = arr[j+1]
-            arr[j+1] = temp
+      for (let i = 0 ; i < arr.length -1;i++) {
+        for (let j = 0; j < arr.length-1 - i;j++){
+          if (arr[j] > arr[j + 1]) {
+            const temp = arr[j + 1]
+            arr[j+1] = arr[j]
+            arr[j] = temp
           }
         }
       }
       return arr
     }
-    console.log(sortArr(example))
+    const sortArrOne = sortArr(example)
+    console.log(sortArrOne[0])
 
     function quickSort (arr) {
       if (arr.length <= 1) {
@@ -27,7 +28,6 @@
       let left = []
       let right = []
       const current = arr.splice(0,1)
-      console.log(current < 99,'-s')
       for (let i = 0;i< arr.length;i++) {
         if (arr[i] < current[0]) {  // 这里原文是没有加上 [0] 这个的  
                                     // 没有加也能正确执行是因为 当数组长度为1时，
@@ -42,6 +42,102 @@
     }
    const quickSortArr = quickSort(example)
    console.log(quickSortArr)
+
+   // 二路归并排序
+   function merge(l,r) {
+    const arr = []
+    let il = 0
+    let ij = 0
+    while(il < l.length && ij < r.length){
+      if (l[il] < r[ij]) {
+        arr.push(l[il])
+        il++
+      } else {
+        arr.push(r[ij])
+        ij++
+      }
+    }
+    while(l[il]){
+      arr.push(l[il])
+      il++
+    }
+    while(r[ij]){
+      arr.push(r[ij])
+      ij++
+    }
+    console.log(il, ij)
+    console.log(arr)
+   }
+   const lArr = [1,22,34,45,56,675]
+   const rArr = [5,16,25,65,77,98,900,989]
+   merge(lArr, rArr)
+   // 反转字符串
+   //自己想的
+   function reverse(str) {
+     let strArr = str.split('')
+     const len = strArr.length
+     let res = []
+     for (let i = 0; i < len; i++) {
+       const temp = strArr.splice(0,1)
+       res.unshift(temp[0])
+     }
+     return res.join('')
+   }
+   // 别人的第一种
+   function reverseStringOne(str) {
+     let res = ''
+     for (let i = str.length-1; i >= 0; i--) {
+      res += str[i]
+     }
+     return res
+   }
+   // 别人的第二种
+   function reverseStringTwo (str) {
+     let strArr = str.split('')
+     let i = 0
+     let j = strArr.length - 1
+     while(i < j){
+      const temp = strArr[i]
+      strArr[i] = strArr[j]
+      strArr[j] = temp
+      i++
+      j--
+     }
+     return strArr.join('')
+   }
+   const str = 'abcdefghigk'
+   console.log(reverse(str))
+   console.log(reverseStringOne(str))
+   console.log(reverseStringTwo(str))
+
+   // 生成随机字符串
+   function randomString (length = 10){
+     const basicString = 'abcdefghijklmnopqrstuvwxyz'
+     let res = ''
+     let len = Math.round(Math.random()*length) || 1
+     for(let i = 0; i<len; i++){
+       const randomNumber = Math.round(Math.random()* basicString.length)
+      res += basicString.charAt(randomNumber)
+     }
+     console.log(len)
+     return res
+   }
+   console.log(randomString())
+
+   // 统计字符串中出现次数最多的字母
+   function strLength(str) {
+     let strObj = {}
+     for (let i = 0;i < str.length; i++) {
+      if (strObj[`${str[i]}`] || strObj[`${str[i]}`] === 0) {
+        strObj[`${str[i]}`] = ++strObj[`${str[i]}`]
+      } else {
+        strObj[`${str[i]}`] = 1
+      }
+     }
+     console.log(Object.keys(strObj))
+   }
+   const strLen = 'fsfsafsdafsadfsgsdfgdshdshdfhfdgertefsdgs'
+   strLength(strLen)
   </script>
 </head>
 <body>
